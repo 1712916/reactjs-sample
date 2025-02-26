@@ -11,6 +11,10 @@ export function callGetCategoryList(onSuccess, onError, onDone) {
     .then((res) => {
       var [data, message, status] = getResponseData(res.data);
       if (status === 200) {
+        //sort by name
+        console.log(data);
+        data.sort((a, b) => a.name.localeCompare(b.name));
+
         onSuccess(data);
       }
     })
